@@ -5,7 +5,7 @@ import Spinner from "../components/Spinner";
 
 export default function Preloader() {
 	return (
-		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-white text-black flex flex-col justify-center items-center space-y-35">
+		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-35">
 			<div className="w-full flex justify-center items-center relative">
 				<CenterGradient />
 				<Image

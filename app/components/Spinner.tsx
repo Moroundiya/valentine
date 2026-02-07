@@ -7,7 +7,7 @@ export default function Spinner() {
 			visible={true}
 			height="40"
 			width="40"
-			color="#fa97cb"
+			color="#fff"
 			strokeWidth="5"
 			animationDuration="0.75"
 			ariaLabel="rotating-lines-loading"
