@@ -1,7 +1,6 @@
 import CenterGradient from "../components/CenterGradient";
 import valDate from "../assets/images/val-date.svg";
 import Image from "next/image";
-import { Fredoka } from "next/font/google";
 import localFont from "next/font/local";
 
 const fredoka = localFont({
