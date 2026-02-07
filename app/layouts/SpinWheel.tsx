@@ -14,7 +14,7 @@ export default function SpinWheel() {
 				style={{
 					WebkitTextStroke: "1px #FAD6E1",
 				}}>
-				Spin the wheel and win free valentine gifts !
+				Spin the wheel and win free valentine gift !
 			</p>
 
 			<div className="w-full flex justify-center items-center">
