@@ -4,6 +4,8 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 import Confetti from "../components/Confetti";
+import { setActivePage } from "../redux/activePageSlice";
+import { useDispatch } from "react-redux";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -11,6 +13,7 @@ const fredoka = localFont({
 });
 
 export default function Gift() {
+	const dispatch = useDispatch();
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-5 py-20 overflow-x-hidden">
 			<div className="w-full flex justify-center items-center relative">
@@ -47,7 +50,9 @@ export default function Gift() {
 				<p>Happy Valentine’s Day ❤️</p>
 			</div>
 			<div className="w-full flex justify-end items-center px-5">
-				<button className="w-fit mt-5 flex justify-center items-center space-x-1 bg-white rounded-full text-sm text-[#d23369] hd-button py-2 px-5 cursor-pointer">
+				<button
+					onClick={() => dispatch(setActivePage("be-my-val"))}
+					className="w-fit mt-5 flex justify-center items-center space-x-1 bg-white rounded-full text-sm text-[#d23369] hd-button py-2 px-5 cursor-pointer">
 					<Icon
 						icon="ic:twotone-replay"
 						className="text-xl"

@@ -2,11 +2,8 @@ import CenterGradient from "../components/CenterGradient";
 import valDate from "../assets/images/val-date.svg";
 import Image from "next/image";
 import localFont from "next/font/local";
-import { useDispatch, useSelector } from "react-redux";
-import { Congratulations } from "../components/modals/Congratulations";
-import { useState } from "react";
-import { setActivePage } from "../redux/activePageSlice";
-import { setValModal } from "../redux/valModalSlice";
+import { useDispatch } from "react-redux";
+import { setActivePage, setValModal } from "../redux/activePageSlice";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -25,7 +22,6 @@ export default function BeMyVal() {
 					src={valDate}
 					alt="Image"
 					className="relative z-20"
-					preload={true}
 				/>
 			</div>
 			<div

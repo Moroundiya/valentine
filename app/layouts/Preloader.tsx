@@ -14,7 +14,6 @@ export default function Preloader() {
 					src={loveLock}
 					alt="Image"
 					className="relative z-20"
-					preload={true}
 				/>
 			</div>
 			<Spinner />

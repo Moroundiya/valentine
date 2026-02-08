@@ -1,6 +1,5 @@
 "use client";
-import { setActivePage } from "@/app/redux/activePageSlice";
-import { setValModal } from "@/app/redux/valModalSlice";
+import { setActivePage, setValModal } from "@/app/redux/activePageSlice";
 import { Modal } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import localFont from "next/font/local";
@@ -33,13 +32,14 @@ export function Congratulations({ modalOpen }) {
 								style={{
 									WebkitTextStroke: "1.5px #d23369",
 								}}>
-								Congratulations!
+								It’s a YES!
 							</Modal.Heading>
 						</Modal.Header>
 						<Modal.Body>
 							<p className="my-3 text-[#c62354]">
-								You literally made the right choice - since the day you chose me
-								actually hahahahahaha.
+								I’m genuinely happy you said yes, being chosen is something
+								special. Now let’s move forward and see where this Valentine
+								journey takes us.
 							</p>
 						</Modal.Body>
 						<button

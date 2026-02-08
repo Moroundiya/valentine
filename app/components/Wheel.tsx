@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import arrow from "../assets/images/arrow.svg";
 import center from "../assets/images/center.svg";
+import { useDispatch } from "react-redux";
+import { setGift, setSpinModal } from "../redux/activePageSlice";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -11,6 +13,7 @@ const fredoka = localFont({
 });
 
 export default function WheelSpinner() {
+	const dispatch = useDispatch();
 	const items = [
 		"Chocolate",
 		"Free Kiss",
@@ -35,7 +38,6 @@ export default function WheelSpinner() {
 
 	const [rotation, setRotation] = useState(0);
 	const [isSpinning, setIsSpinning] = useState(false);
-	const [result, setResult] = useState(null);
 
 	const wheelBackground = `conic-gradient(${items
 		.map((_, i) => {
@@ -49,8 +51,6 @@ export default function WheelSpinner() {
 		if (isSpinning) return;
 
 		setIsSpinning(true);
-		setResult(null);
-
 		const winningIndex = Math.floor(Math.random() * items.length);
 
 		const spins = 6;
@@ -63,7 +63,8 @@ export default function WheelSpinner() {
 		setTimeout(() => {
 			const normalized = ((finalRotation % 360) + 360) % 360;
 			const index = Math.floor((360 - normalized) / sliceAngle) % items.length;
-			setResult(items[index]);
+			dispatch(setGift(items[index]));
+			dispatch(setSpinModal(true));
 			setIsSpinning(false);
 		}, 4000);
 	};
@@ -106,7 +107,7 @@ export default function WheelSpinner() {
 				})}
 			</div>
 
-			<div className="w-9/12 mx-auto mt-6 flex flex-col space-y-5 justify-center items-center lg:w-9/12">
+			<div className="w-5/12 mx-auto mt-6 flex flex-col space-y-5 justify-center items-center">
 				<button
 					onClick={spinWheel}
 					disabled={isSpinning}
@@ -114,10 +115,6 @@ export default function WheelSpinner() {
 					{isSpinning ? "Spinning..." : "Spin"}
 				</button>
 			</div>
-
-			{result && (
-				<div className="text-lg sm:text-xl font-bold">🎯 Result: {result}</div>
-			)}
 		</div>
 	);
 }

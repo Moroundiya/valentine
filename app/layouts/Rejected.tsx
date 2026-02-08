@@ -1,8 +1,8 @@
 import Image from "next/image";
 import localFont from "next/font/local";
 import angry from "../assets/images/angry.gif";
-import { setValModal } from "../redux/valModalSlice";
 import { useDispatch } from "react-redux";
+import { setValModal } from "../redux/activePageSlice";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -25,7 +25,7 @@ export default function Rejected() {
 				alt="Image"
 				className=""
 			/>
-			<p>or just say YES!</p>
+			<p className="text-sm text-white">or just say YES!</p>
 
 			<div className="w-9/12 mx-auto flex flex-col mt-8 space-y-5 justify-center items-center lg:w-8/12">
 				<button

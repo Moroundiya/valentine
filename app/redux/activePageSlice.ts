@@ -2,14 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const activePageSlice = createSlice({
 	name: "activePage",
-	initialState: { value: "preloader" },
+	initialState: {
+		activePage: "preloader",
+		valModal: false,
+		spinModal: false,
+		gift: "",
+	},
 	reducers: {
 		setActivePage: (state, action) => {
-			state.value = action.payload;
+			state.activePage = action.payload;
+		},
+
+		setValModal: (state, action) => {
+			state.valModal = action.payload;
+		},
+		setSpinModal: (state, action) => {
+			state.spinModal = action.payload;
+		},
+
+		setGift: (state, action) => {
+			state.gift = action.payload;
 		},
 	},
 });
 
-export const { setActivePage } = activePageSlice.actions;
+export const { setActivePage, setValModal, setSpinModal, setGift } =
+	activePageSlice.actions;
 
 export default activePageSlice.reducer;
