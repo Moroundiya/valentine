@@ -5,7 +5,14 @@ import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 import Confetti from "../components/Confetti";
 import { setActivePage } from "../redux/activePageSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import chocolate from "../assets/images/chocolate.svg";
+import ringbox from "../assets/images/Ring-box.svg";
+import kiss from "../assets/images/Lips.svg";
+import icecream from "../assets/images/Ice-cream.svg";
+import hug from "../assets/images/Cat-Hugging.svg";
+import cupcake from "../assets/images/Cupcake.svg";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -14,6 +21,25 @@ const fredoka = localFont({
 
 export default function Gift() {
 	const dispatch = useDispatch();
+	const gift = useSelector((state: string) => state.activePage.gift);
+	let giftImg;
+
+	if (gift === "Chocolate") {
+		giftImg = chocolate;
+	} else if (gift === "Free Kiss") {
+		giftImg = kiss;
+	} else if (gift === "Ice Cream") {
+		giftImg = icecream;
+	} else if (gift === "Flowers") {
+		giftImg = flower;
+	} else if (gift === "Ring Box") {
+		giftImg = ringbox;
+	} else if (gift === "Free Hug") {
+		giftImg = hug;
+	} else if (gift === "Cup Cake") {
+		giftImg = cupcake;
+	}
+
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-5 py-20 overflow-x-hidden">
 			<div className="w-full flex justify-center items-center relative">
@@ -21,9 +47,9 @@ export default function Gift() {
 					<CenterGradient />
 				</div>
 				<Image
-					src={flower}
+					src={giftImg}
 					alt="Image"
-					className="w-90 rotate-30 animate-pulse relative z-20"
+					className="w-90 rotate-20 relative z-20"
 				/>
 			</div>
 			<div
