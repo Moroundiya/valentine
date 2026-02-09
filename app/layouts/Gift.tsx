@@ -32,7 +32,7 @@ export default function Gift() {
 					Thank you for choosing me !
 				</p>
 			</div>
-			<div className="w-11/12 mx-auto text-white text-sm flex flex-col justify-center itjems-center space-y-3">
+			<div className="w-11/12 mx-auto text-white text-[13px] flex flex-col justify-center itjems-center space-y-3">
 				<p>In a world full of choices, being chosen is something meaningful.</p>
 				<p>
 					This little app might just be for fun, but the feeling behind it is
