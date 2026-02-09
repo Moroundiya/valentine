@@ -16,11 +16,9 @@ export default function SpinWheel() {
 				}}>
 				Spin the wheel and win free valentine gift !
 			</p>
-
 			<div className="w-full flex justify-center items-center">
 				<WheelSpinner />
 			</div>
-			
 		</div>
 	);
 }
