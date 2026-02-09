@@ -1,6 +1,9 @@
 "use client";
-import localFont from "next/font/local";
 import { useState } from "react";
+import localFont from "next/font/local";
+import Image from "next/image";
+import arrow from "../assets/images/arrow.svg";
+import center from "../assets/images/center.svg";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -67,9 +70,12 @@ export default function WheelSpinner() {
 
 	return (
 		<div className="flex flex-col items-center gap-6 p-6 sm:p-10 overflow-hidden relative w-full px-5">
-			{/* Arrow */}
-			<div className="w-0 h-0 border-l-8 border-r-8 border-b-16 absolute z-20 top-2 lg:top-9 left-1/2 -translate-x-1/2 border-transparent border-b-gray-900" />
-
+			<div className="absolute z-20 top-2 lg:top-9 left-1/2 -translate-x-1/2">
+				<Image
+					src={arrow}
+					alt="Image"
+				/>
+			</div>
 			<div
 				className="relative aspect-square w-80 shadow-md lg:w-96 rounded-full border-10 border-[#A02956]
         transition-transform duration-[4000ms] ease-[cubic-bezier(0.17,0.67,0.12,0.99)] before:content-[''] before:w-full before:h-full before:bg-transparent before:border-6 before:border-[#EA4986] before:absolute before:top-0 before:left-0 before:rounded-full"
@@ -77,6 +83,12 @@ export default function WheelSpinner() {
 					transform: `rotate(${rotation}deg)`,
 					background: wheelBackground,
 				}}>
+				<div className="absolute top-1/2 left-1/2 z-30 -translate-1/2">
+					<Image
+						src={center}
+						alt="Image"
+					/>
+				</div>
 				{items.map((item, index) => {
 					const angle = index * sliceAngle;
 					return (
@@ -94,16 +106,15 @@ export default function WheelSpinner() {
 				})}
 			</div>
 
-			<div className="w-9/12 mx-auto mt-10 flex flex-col space-y-5 justify-center items-center lg:w-9/12">
+			<div className="w-9/12 mx-auto mt-6 flex flex-col space-y-5 justify-center items-center lg:w-9/12">
 				<button
 					onClick={spinWheel}
 					disabled={isSpinning}
-					className="text-[#d23369] hd-button disabled:opacity-50 font-semibold bg-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
+					className="text-[#d23369] hd-button disabled:opacity-50 font-semibold bg-white w-full cursor-pointer rounded-xl shadow-md p-2.5 text-lg">
 					{isSpinning ? "Spinning..." : "Spin"}
 				</button>
 			</div>
 
-			{/* Result */}
 			{result && (
 				<div className="text-lg sm:text-xl font-bold">🎯 Result: {result}</div>
 			)}

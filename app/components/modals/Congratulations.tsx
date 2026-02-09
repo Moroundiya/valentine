@@ -34,16 +34,12 @@ export function Congratulations() {
 							</Modal.Heading>
 						</Modal.Header>
 						<Modal.Body>
-							<p className="my-3">
-								<span className="text-[#d23369] pe-1">
-									You literally made the right choice
-								</span>
-								<span className="text-[#FAD6E1]">
-									- since the day you chose me actually hahahahahaha.
-								</span>
+							<p className="my-3 text-[#c62354]">
+								You literally made the right choice - since the day you chose me
+								actually hahahahahaha.
 							</p>
 						</Modal.Body>
-						<button className="w-full mt-5 text-white rounded-xl bg-[#d23369] hd-button py-3">
+						<button className="w-full mt-5 text-white rounded-xl bg-[#d23369] hd-button py-3 cursor-pointer">
 							Continue
 						</button>
 					</Modal.Dialog>

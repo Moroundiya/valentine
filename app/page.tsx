@@ -1,4 +1,5 @@
 import { Congratulations } from "./components/modals/Congratulations";
+import { Win } from "./components/modals/Win";
 import BeMyVal from "./layouts/BeMyVal";
 import Preloader from "./layouts/Preloader";
 import Rejected from "./layouts/Rejected";
@@ -11,7 +12,8 @@ export default function Home() {
 			{/* <BeMyVal /> */}
 			{/* <Congratulations /> */}
 			{/* <Rejected /> */}
-			<SpinWheel />
+			{/* <SpinWheel /> */}
+			<Win />
 		</div>
 	);
 }
