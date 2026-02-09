@@ -3,6 +3,7 @@ import flower from "../assets/images/flower.svg";
 import Image from "next/image";
 import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
+import Confetti from "../components/Confetti";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -54,6 +55,7 @@ export default function Gift() {
 					<span>Replay</span>
 				</button>
 			</div>
+			<Confetti />
 		</div>
 	);
 }

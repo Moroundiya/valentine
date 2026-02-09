@@ -1,7 +1,7 @@
 "use client";
 import { Button, Modal } from "@heroui/react";
-import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
+import localFont from "next/font/local";
 
 const fredoka = localFont({
 	src: "../../assets/fonts/FredokaOne-Regular.ttf",

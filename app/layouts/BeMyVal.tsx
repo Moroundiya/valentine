@@ -10,19 +10,21 @@ const fredoka = localFont({
 
 export default function BeMyVal() {
 	return (
-		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-30 py-16">
+		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center overflow-x-hidden space-y-10 py-16">
 			<div className="w-full flex justify-center items-center relative">
-				<CenterGradient />
+				<div className="absolute flex justify-center items-center w-full top-1/2 left-1/2 -translate-1/2">
+					<CenterGradient />
+				</div>
 				<Image
 					src={valDate}
 					alt="Image"
-					className="absolute -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 z-20"
+					className="relative z-20"
 				/>
 			</div>
 			<div
-				className={`${fredoka.className} w-full flex flex-col justify-center items-center text-center px-3`}>
+				className={`${fredoka.className} w-full flex flex-col justify-center items-center text-center`}>
 				<p
-					className=" text-[1.7rem] text-[#d23369]"
+					className=" text-[1.5rem] text-[#d23369]"
 					style={{
 						WebkitTextStroke: "1px #FAD6E1",
 					}}>
