@@ -31,11 +31,11 @@ export default function BeMyVal() {
 					Will you be my Valentine?
 				</p>
 
-				<div className="w-10/12 mx-auto flex flex-col mt-8 space-y-4 justify-center items-center lg:w-8/12">
-					<button className="bg-[#E26493] text-white w-full cursor-pointer rounded-md shadow p-3.5 text-lg">
+				<div className="w-10/12 mx-auto flex flex-col mt-8 space-y-6 justify-center items-center lg:w-8/12">
+					<button className="bg-[#E26493] hd-button text-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-lg">
 						Yes
 					</button>
-					<button className="bg-[#3E000C] text-white w-full cursor-pointer rounded-md shadow p-3.5 text-lg">
+					<button className="bg-[#3E000C] hd-button text-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-lg">
 						No
 					</button>
 				</div>
