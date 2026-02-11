@@ -1,3 +1,4 @@
+
 import CenterGradient from "../components/CenterGradient";
 import flower from "../assets/images/flower.svg";
 import Image from "next/image";
@@ -21,24 +22,19 @@ const fredoka = localFont({
 
 export default function Gift() {
 	const dispatch = useDispatch();
-	const gift = useSelector((state: string) => state.activePage.gift);
-	let giftImg;
 
-	if (gift === "Chocolate") {
-		giftImg = chocolate;
-	} else if (gift === "Free Kiss") {
-		giftImg = kiss;
-	} else if (gift === "Ice Cream") {
-		giftImg = icecream;
-	} else if (gift === "Flowers") {
-		giftImg = flower;
-	} else if (gift === "Ring Box") {
-		giftImg = ringbox;
-	} else if (gift === "Free Hug") {
-		giftImg = hug;
-	} else if (gift === "Cup Cake") {
-		giftImg = cupcake;
-	}
+	const gift = useSelector((state: string) => state.activePage.gift);
+
+	const giftImages: Record<string, string> = {
+		Chocolate: chocolate,
+		"Free Kiss": kiss,
+		"Ice Cream": icecream,
+		Flowers: flower,
+		"Ring Box": ringbox,
+		"Free Hug": hug,
+		"Cup Cake": cupcake,
+	};
+	const giftImg = giftImages[gift] ?? null;
 
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-5 py-20 overflow-x-hidden">
@@ -49,7 +45,8 @@ export default function Gift() {
 				<Image
 					src={giftImg}
 					alt="Image"
-					className="w-90 rotate-20 relative z-20"
+                    className="w-90 rotate-20 relative z-20"
+                    priority
 				/>
 			</div>
 			<div

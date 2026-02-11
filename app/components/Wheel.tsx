@@ -51,19 +51,20 @@ export default function WheelSpinner() {
 		if (isSpinning) return;
 
 		setIsSpinning(true);
+
 		const winningIndex = Math.floor(Math.random() * items.length);
 
 		const spins = 6;
 		const targetAngle = 360 - (winningIndex * sliceAngle + sliceAngle / 2);
 
-		const finalRotation = rotation + spins * 360 + targetAngle;
+		// const finalRotation = rotation + spins * 360 + targetAngle;
 
-		setRotation(finalRotation);
+		setRotation((prev) => prev + spins * 360 + targetAngle);
+
+		// setRotation(finalRotation);
 
 		setTimeout(() => {
-			const normalized = ((finalRotation % 360) + 360) % 360;
-			const index = Math.floor((360 - normalized) / sliceAngle) % items.length;
-			dispatch(setGift(items[index]));
+			dispatch(setGift(items[winningIndex]));
 			dispatch(setSpinModal(true));
 			setIsSpinning(false);
 		}, 4000);
@@ -78,7 +79,7 @@ export default function WheelSpinner() {
 				/>
 			</div>
 			<div
-				className="relative aspect-square w-80 shadow-md lg:w-96 rounded-full border-10 border-[#A02956]
+				className="relative aspect-square w-80 shadow-md lg:w-96 rounded-full border-10 border-[#A02956] pointer-events-none
         transition-transform duration-[4000ms] ease-[cubic-bezier(0.17,0.67,0.12,0.99)] before:content-[''] before:w-full before:h-full before:bg-transparent before:border-6 before:border-[#EA4986] before:absolute before:top-0 before:left-0 before:rounded-full"
 				style={{
 					transform: `rotate(${rotation}deg)`,
@@ -107,7 +108,7 @@ export default function WheelSpinner() {
 				})}
 			</div>
 
-			<div className="w-5/12 mx-auto mt-6 flex flex-col space-y-5 justify-center items-center">
+			<div className="w-5/12 mx-auto mt-6 flex flex-col space-y-5 justify-center relative z-20 items-center">
 				<button
 					onClick={spinWheel}
 					disabled={isSpinning}
