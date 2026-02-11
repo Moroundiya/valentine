@@ -2,6 +2,11 @@ import CenterGradient from "../components/CenterGradient";
 import valDate from "../assets/images/val-date.svg";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { useDispatch, useSelector } from "react-redux";
+import { Congratulations } from "../components/modals/Congratulations";
+import { useState } from "react";
+import { setActivePage } from "../redux/activePageSlice";
+import { setValModal } from "../redux/valModalSlice";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -9,6 +14,7 @@ const fredoka = localFont({
 });
 
 export default function BeMyVal() {
+	const dispatch = useDispatch();
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center overflow-x-hidden space-y-10 py-16">
 			<div className="w-full flex justify-center items-center relative">
@@ -19,6 +25,7 @@ export default function BeMyVal() {
 					src={valDate}
 					alt="Image"
 					className="relative z-20"
+					preload={true}
 				/>
 			</div>
 			<div
@@ -32,10 +39,16 @@ export default function BeMyVal() {
 				</p>
 
 				<div className="w-9/12 mx-auto flex flex-col mt-8 space-y-5 justify-center items-center lg:w-8/12">
-					<button className="text-[#d23369] hd-button bg-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
+					<button
+						onClick={() => dispatch(setValModal(true))}
+						className="text-[#d23369] hd-button bg-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
 						Yes
 					</button>
-					<button className="bg-[#3E000C] hd-button text-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
+					<button
+						onClick={() => {
+							dispatch(setActivePage("no"));
+						}}
+						className="bg-[#3E000C] hd-button text-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
 						No
 					</button>
 				</div>

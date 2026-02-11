@@ -1,25 +1,28 @@
 "use client";
-import { Button, Modal } from "@heroui/react";
+import { setActivePage } from "@/app/redux/activePageSlice";
+import { setValModal } from "@/app/redux/valModalSlice";
+import { Modal } from "@heroui/react";
 import { Icon } from "@iconify/react";
 import localFont from "next/font/local";
+import { useDispatch } from "react-redux";
 
 const fredoka = localFont({
 	src: "../../assets/fonts/FredokaOne-Regular.ttf",
 	display: "swap",
 });
 
-export function Congratulations() {
+export function Congratulations({ modalOpen }) {
+	const dispatch = useDispatch();
 	return (
 		<Modal>
-			<Button variant="secondary">Open Modal</Button>
 			<Modal.Backdrop
 				isDismissable={false}
+				isOpen={modalOpen}
 				variant="blur">
 				<Modal.Container
 					size="md"
 					placement="center">
 					<Modal.Dialog>
-						{/* <Modal.CloseTrigger /> */}
 						<Modal.Header>
 							<Icon
 								icon="line-md:emoji-smile-wink-filled"
@@ -39,7 +42,12 @@ export function Congratulations() {
 								actually hahahahahaha.
 							</p>
 						</Modal.Body>
-						<button className="w-full mt-5 text-white rounded-xl bg-[#d23369] hd-button py-3 cursor-pointer">
+						<button
+							onClick={() => {
+								dispatch(setValModal(false));
+								dispatch(setActivePage("spin"));
+							}}
+							className="w-full mt-5 text-white rounded-xl bg-[#d23369] hd-button py-3 cursor-pointer">
 							Continue
 						</button>
 					</Modal.Dialog>
