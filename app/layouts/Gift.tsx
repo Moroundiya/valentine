@@ -15,12 +15,13 @@ import hug from "../assets/images/Cat-Hugging.webp";
 import cupcake from "../assets/images/Cupcake.webp";
 import flower from "../assets/images/flower.webp";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/SplitText";
-gsap.registerPlugin(SplitText);
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -34,7 +35,7 @@ export default function Gift() {
 	const giftRef = useRef<HTMLDivElement | null>(null);
 	const dispatch = useDispatch();
 
-	useEffect(() => {
+	useGSAP(() => {
 		const tl = gsap.timeline();
 		tl.to(boxRef.current, {
 			rotation: 5,
@@ -70,7 +71,7 @@ export default function Gift() {
 			},
 			"-=0.6",
 		);
-	}, []);
+	});
 
 	const gift = useSelector((state: string) => state.activePage.gift);
 
@@ -85,10 +86,11 @@ export default function Gift() {
 	};
 	const giftImg = giftImages[gift] ?? null;
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (!showMessage) return;
 
 		const splitThanks = new SplitText("#thanks", { type: "words" });
+		const splitMessage = new SplitText("#message", { type: "words" });
 
 		gsap.from(splitThanks.words, {
 			opacity: 0,
@@ -98,8 +100,29 @@ export default function Gift() {
 			ease: "power3.out",
 		});
 
+		gsap.from(splitMessage.words, {
+			opacity: 0,
+			duration: 1,
+			stagger: 0.18,
+			delay: 3,
+			ease: "power3.out",
+		});
+
+		gsap.from("#replay", {
+			x: 50,
+			opacity: 0,
+			duration: 1,
+			ease: "power3.out",
+			scrollTrigger: {
+				trigger: "#replay",
+				start: "top 90%",
+				toggleActions: "play reverse play reverse",
+			},
+		});
+
 		return () => {
 			splitThanks.revert();
+			splitMessage.revert();
 		};
 	}, [showMessage]);
 
@@ -144,7 +167,9 @@ export default function Gift() {
 							Thank you for choosing me !
 						</p>
 					</div>
-					<div className="w-11/12 mx-auto text-white text-[13px] flex flex-col justify-center itjems-center space-y-3">
+					<div
+						className="w-11/12 mx-auto text-white text-[13px] flex flex-col justify-center items-center space-y-3"
+						id="message">
 						<p>
 							In a world full of choices, being chosen is something meaningful.
 						</p>
@@ -162,7 +187,8 @@ export default function Gift() {
 					<div className="w-full flex justify-end items-center px-5">
 						<button
 							onClick={() => dispatch(setActivePage("be-my-val"))}
-							className="w-fit mt-5 flex justify-center items-center space-x-1 bg-white rounded-full text-sm text-[#d23369] hd-button py-2 px-5 cursor-pointer">
+							className="w-fit mt-5 flex justify-center items-center space-x-1 bg-white rounded-full text-sm text-[#d23369] hd-button py-2 px-5 cursor-pointer"
+							id="replay">
 							<Icon
 								icon="ic:twotone-replay"
 								className="text-xl"
