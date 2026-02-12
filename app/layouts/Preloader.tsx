@@ -9,11 +9,10 @@ import { useGSAP } from "@gsap/react";
 export default function Preloader() {
 	useGSAP(() => {
 		gsap.from("#logo", {
-			scale: 1.3,
-			// x: -100,
+			y: -50,
 			opacity: 0,
-			duration: 1,
-			ease: "power1.inOut",
+			duration: 3,
+			ease: "power3.out",
 		});
 	});
 

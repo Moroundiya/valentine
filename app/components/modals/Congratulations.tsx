@@ -34,7 +34,7 @@ export function Congratulations({ modalOpen }) {
 		});
 
 		gsap.from("#slideUp", {
-			y: 50,
+			y: 10,
 			opacity: 0,
 			duration: 1,
 			ease: "power3.out",

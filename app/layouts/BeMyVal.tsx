@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setActivePage, setValModal } from "../redux/activePageSlice";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import SplitText from "gsap/SplitText";
+gsap.registerPlugin(SplitText);
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -15,29 +17,34 @@ const fredoka = localFont({
 export default function BeMyVal() {
 	useGSAP(() => {
 		gsap.from("#logo", {
-			scale: 1.3,
-			// x: -100,
+			y: -50,
 			opacity: 0,
-			duration: 1,
-			ease: "power1.inOut",
+			duration: 3,
+			ease: "power3.out",
 		});
 
 		gsap.from("#slideUp > *", {
 			y: 50,
 			opacity: 0,
 			duration: 1,
-			ease: "power2.out",
+			ease: "power3.out",
 			stagger: 0.3,
-			delay: 1,
+			delay: 2.8,
 		});
 
-		// gsap.from("#zoomIn", {
-		// 	scale: 0,
-		// 	x: -40,
-		// 	opacity: 0,
-		// 	duration: 1,
-		// 	ease: "power2.out",
-		// });
+		const splitQuestion = new SplitText("#question", { type: "words" });
+
+		gsap.from(splitQuestion.words, {
+			opacity: 0,
+			duration: 1,
+			stagger: 0.18,
+			delay: 1,
+			ease: "power3.out",
+		});
+
+		return () => {
+			splitQuestion.revert();
+		};
 	});
 
 	const dispatch = useDispatch();
@@ -59,13 +66,13 @@ export default function BeMyVal() {
 				/>
 			</div>
 			<div
-				className={`${fredoka.className} w-full flex flex-col justify-center items-center text-center`}
-				id="slideUp">
+				className={`${fredoka.className} w-full flex flex-col justify-center items-center text-center`}>
 				<p
 					className=" text-[1.5rem] text-[#d23369]"
 					style={{
 						WebkitTextStroke: "1px #FAD6E1",
-					}}>
+					}}
+					id="question">
 					Will you be my Valentine?
 				</p>
 
