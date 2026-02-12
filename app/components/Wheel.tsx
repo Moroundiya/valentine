@@ -6,6 +6,8 @@ import arrow from "../assets/images/arrow.svg";
 import center from "../assets/images/center.svg";
 import { useDispatch } from "react-redux";
 import { setGift, setSpinModal } from "../redux/activePageSlice";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -13,6 +15,25 @@ const fredoka = localFont({
 });
 
 export default function WheelSpinner() {
+	useGSAP(() => {
+		gsap.from("#slideUp", {
+			y: 50,
+			opacity: 0,
+			duration: 1,
+			ease: "power2.out",
+			stagger: 0.3,
+			delay: 3,
+		});
+
+		gsap.from("#slideIn", {
+			x: 50,
+			opacity: 0,
+			duration: 1,
+			ease: "power2.out",
+			delay: 2.3,
+		});
+	});
+
 	const dispatch = useDispatch();
 	const items = [
 		"Chocolate",
@@ -57,11 +78,7 @@ export default function WheelSpinner() {
 		const spins = 6;
 		const targetAngle = 360 - (winningIndex * sliceAngle + sliceAngle / 2);
 
-		// const finalRotation = rotation + spins * 360 + targetAngle;
-
 		setRotation((prev) => prev + spins * 360 + targetAngle);
-
-		// setRotation(finalRotation);
 
 		setTimeout(() => {
 			dispatch(setGift(items[winningIndex]));
@@ -71,7 +88,9 @@ export default function WheelSpinner() {
 	};
 
 	return (
-		<div className="flex flex-col items-center gap-6 p-6 sm:p-10 overflow-hidden relative w-full px-5">
+		<div
+			className="flex flex-col items-center gap-6 p-6 sm:p-10 overflow-hidden relative w-full px-5"
+			id="slideIn">
 			<div className="absolute z-20 top-2 lg:top-9 left-1/2 -translate-x-1/2">
 				<Image
 					src={arrow}
@@ -112,6 +131,7 @@ export default function WheelSpinner() {
 				<button
 					onClick={spinWheel}
 					disabled={isSpinning}
+					id="slideUp"
 					className="text-[#d23369] hd-button disabled:opacity-50 font-semibold bg-white w-full cursor-pointer rounded-xl shadow-md p-2.5 text-lg">
 					{isSpinning ? "Spinning..." : "Spin"}
 				</button>

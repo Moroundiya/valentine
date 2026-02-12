@@ -1,4 +1,3 @@
-
 import CenterGradient from "../components/CenterGradient";
 import flower from "../assets/images/flower.svg";
 import Image from "next/image";
@@ -7,6 +6,7 @@ import { Icon } from "@iconify/react";
 import Confetti from "../components/Confetti";
 import { setActivePage } from "../redux/activePageSlice";
 import { useDispatch, useSelector } from "react-redux";
+import openGift from "../assets/images/open-gift.webp";
 
 import chocolate from "../assets/images/chocolate.svg";
 import ringbox from "../assets/images/Ring-box.svg";
@@ -15,13 +15,57 @@ import icecream from "../assets/images/Ice-cream.svg";
 import hug from "../assets/images/Cat-Hugging.svg";
 import cupcake from "../assets/images/Cupcake.svg";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
 	display: "swap",
 });
 
 export default function Gift() {
+	const boxRef = useRef<HTMLDivElement | null>(null);
+	const giftRef = useRef<HTMLDivElement | null>(null);
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const tl = gsap.timeline();
+
+		// 1️⃣ Shake for 2 seconds
+		tl.to(boxRef.current, {
+			rotation: 5,
+			duration: 0.1,
+			yoyo: true,
+			repeat: 19, // 0.1 * 20 = 2 seconds
+			ease: "power1.inOut",
+		});
+
+		// 2️⃣ Gift zoom up
+		tl.fromTo(
+			giftRef.current,
+			{ scale: 0, opacity: 0, y: 400, zIndex: -10, position: "absolute" },
+			{
+				scale: 1.8,
+				opacity: 1,
+				y: -50,
+				duration: 0.8,
+				zIndex: 1,
+				ease: "back.out(1.7)",
+			},
+		);
+
+		// 3️⃣ Box disappears
+		tl.to(
+			boxRef.current,
+			{
+				opacity: 0,
+				scale: 0.7,
+				duration: 0.6,
+				ease: "power2.inOut",
+			},
+			"-=0.6",
+		);
+	}, []);
 
 	const gift = useSelector((state: string) => state.activePage.gift);
 
@@ -39,16 +83,30 @@ export default function Gift() {
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-5 py-20 overflow-x-hidden">
 			<div className="w-full flex justify-center items-center relative">
-				<div className="absolute flex justify-center items-center w-full ">
+				<div className="absolute flex justify-center items-center w-full">
 					<CenterGradient />
 				</div>
-				<Image
-					src={giftImg}
-					alt="Image"
-                    className="w-90 rotate-20 relative z-20"
-                    priority
-				/>
+
+				{/* BOX IMAGE */}
+				<div
+					ref={boxRef}
+					className="relative z-20">
+					<Image
+						src={giftImg}
+						alt="Image"
+						className="w-90 rotate-20"
+						priority
+					/>
+				</div>
+
+				{/* GIFT (emoji or image) */}
+				<div
+					ref={giftRef}
+					className="absolute text-7xl opacity-0">
+					🎁
+				</div>
 			</div>
+
 			<div
 				className={`${fredoka.className} w-full flex flex-col justify-center items-center text-center px-3 mt-3`}>
 				<p
