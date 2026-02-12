@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const activePageSlice = createSlice({
 	name: "activePage",
 	initialState: {
-		activePage: "preloader",
+		activePage: "spin",
 		valModal: false,
 		spinModal: false,
 		gift: "",

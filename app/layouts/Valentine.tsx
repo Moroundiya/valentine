@@ -20,9 +20,9 @@ export default function Valentine() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		setTimeout(() => {
-			dispatch(setActivePage("be-my-val"));
-		}, 3000);
+		// setTimeout(() => {
+		// 	dispatch(setActivePage("be-my-val"));
+		// }, 3000);
 	}, []);
 
 	return (

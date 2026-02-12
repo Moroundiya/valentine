@@ -36,7 +36,7 @@ export default function Gift() {
 			rotation: 5,
 			duration: 0.1,
 			yoyo: true,
-			repeat: 19, // 0.1 * 20 = 2 seconds
+			repeat: 19,
 			ease: "power1.inOut",
 		});
 
