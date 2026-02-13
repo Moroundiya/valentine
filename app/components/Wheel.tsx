@@ -118,7 +118,7 @@ export default function WheelSpinner() {
 							className="absolute inset-0 flex justify-center"
 							style={{ transform: `rotate(${angle}deg)` }}>
 							<div
-								className={`${fredoka.className} absolute top-[20%] left-1/2 -translate-x-1/2 ms-9 lg:ms-13 w-full text-center -rotate-[90deg] text-sm md:text-base text-white`}
+								className={`${fredoka.className} absolute top-[20%] left-1/2 -translate-x-1/2 ms-9 lg:ms-13 w-full text-center -rotate-90 text-sm md:text-base text-white`}
 								style={{ transform: `rotate(${sliceAngle / 2}deg)` }}>
 								{item}
 							</div>

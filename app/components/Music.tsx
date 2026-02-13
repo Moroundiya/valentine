@@ -75,7 +75,7 @@ export default function Music() {
 					/>
 				))}
 			</div>
-			<button
+			<div
 				onClick={handleToggle}
 				className="bg-white text-[#d23369] border-2 border-[#EA4986] p-1 shadow-md cursor-pointer w-10 h-10 rounded-full flex justify-center items-center">
 				{isPlaying ? (
@@ -89,7 +89,7 @@ export default function Music() {
 						className="text-3xl"
 					/>
 				)}
-			</button>
+			</div>
 		</div>
 	);
 }

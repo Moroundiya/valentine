@@ -31,7 +31,7 @@ const fredoka = localFont({
 });
 
 export default function Gift() {
-	const { playAudio, pauseAudio, stopAudio, killAudio } = useAudio();
+	const { playAudio, killAudio } = useAudio();
 	const boxRef = useRef<HTMLDivElement | null>(null);
 	const giftRef = useRef<HTMLDivElement | null>(null);
 	const dispatch = useDispatch();
