@@ -14,10 +14,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Valentine() {
 	const dispatch = useDispatch();
-	const activePage = useSelector((state: any) => state.activePage.activePage);
-	const valModal = useSelector((state: any) => state.activePage.valModal);
-	const spinModal = useSelector((state: any) => state.activePage.spinModal);
-	const gift = useSelector((state: any) => state.activePage.gift);
+	const activePage = useSelector(
+		(state: string) => state.activePage.activePage,
+	);
+	const valModal = useSelector((state: boolean) => state.activePage.valModal);
+	const spinModal = useSelector((state: boolean) => state.activePage.spinModal);
+	const gift = useSelector((state: string) => state.activePage.gift);
 
 	useEffect(() => {
 		setTimeout(() => {

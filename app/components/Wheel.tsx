@@ -57,8 +57,8 @@ export default function WheelSpinner() {
 
 	const sliceAngle = 360 / items.length;
 
-	const [rotation, setRotation] = useState(0);
-	const [isSpinning, setIsSpinning] = useState(false);
+	const [rotation, setRotation] = useState<number>(0);
+	const [isSpinning, setIsSpinning] = useState<boolean>(false);
 
 	const wheelBackground = `conic-gradient(${items
 		.map((_, i) => {

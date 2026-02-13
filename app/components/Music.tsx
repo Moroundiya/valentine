@@ -8,7 +8,7 @@ export default function Music() {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const barsRef = useRef<HTMLDivElement[]>([]);
 	const animationRef = useRef<gsap.core.Tween | null>(null);
-	const [isPlaying, setIsPlaying] = useState(false);
+	const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
 	const handleToggle = async () => {
 		if (!audioRef.current) return;

@@ -17,7 +17,7 @@ const fredoka = localFont({
 	display: "swap",
 });
 
-export function Congratulations({ modalOpen }) {
+export function Congratulations({ modalOpen }: { modalOpen :}) {
 	const dispatch = useDispatch();
 
 	const valModal = useSelector((state: boolean) => state.activePage.valModal);
