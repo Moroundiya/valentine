@@ -3,7 +3,7 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { Icon } from "@iconify/react";
 import Confetti from "../components/Confetti";
-import { setActivePage } from "../redux/activePageSlice";
+import { setActivePage, setMusicPlaying } from "../redux/activePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import openGift from "../assets/images/open-gift.webp";
 
@@ -21,6 +21,7 @@ import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Music from "../components/Music";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const fredoka = localFont({
@@ -47,7 +48,7 @@ export default function Gift() {
 
 		tl.fromTo(
 			giftRef.current,
-			{ scale: 0, opacity: 0, y: 400, zIndex: -10, position: "absolute" },
+			{ scale: 0, opacity: 0, y: 200, zIndex: -10, position: "absolute" },
 			{
 				scale: 1.8,
 				opacity: 1,
@@ -104,7 +105,7 @@ export default function Gift() {
 			opacity: 0,
 			duration: 1,
 			stagger: 0.18,
-			delay: 3,
+			delay: 3.5,
 			ease: "power3.out",
 		});
 
@@ -112,10 +113,11 @@ export default function Gift() {
 			x: 50,
 			opacity: 0,
 			duration: 1,
+			delay: 1,
 			ease: "power3.out",
 			scrollTrigger: {
 				trigger: "#replay",
-				start: "top 90%",
+				start: "bottom bottom ",
 				toggleActions: "play reverse play reverse",
 			},
 		});
@@ -128,8 +130,9 @@ export default function Gift() {
 
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center space-y-5 py-20 overflow-x-hidden">
+			<Music />
 			<div className="w-full flex justify-center items-center relative">
-				<div className="absolute flex justify-center items-center w-full">
+				<div className="absolute flex justify-center items-center w-full h-full">
 					<CenterGradient />
 				</div>
 				<div
@@ -146,9 +149,10 @@ export default function Gift() {
 					ref={giftRef}
 					className="absolute opacity-0">
 					<Image
-						src={giftImg}
+						// src={giftImg}
+						src={flower}
 						alt="Image"
-						className="w-50 rotate-20"
+						className="w-50 rotate-20 transition-all ease-in-out duration-500"
 						priority
 					/>
 				</div>

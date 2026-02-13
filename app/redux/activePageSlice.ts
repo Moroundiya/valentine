@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const activePageSlice = createSlice({
 	name: "activePage",
 	initialState: {
-		activePage: "spin",
+		activePage: "gift",
 		valModal: false,
 		spinModal: false,
 		gift: "",
+		musicPlaying: false,
 	},
 	reducers: {
 		setActivePage: (state, action) => {
@@ -23,10 +24,19 @@ const activePageSlice = createSlice({
 		setGift: (state, action) => {
 			state.gift = action.payload;
 		},
+
+		setMusicPlaying: (state, action) => {
+			state.musicPlaying = action.payload;
+		},
 	},
 });
 
-export const { setActivePage, setValModal, setSpinModal, setGift } =
-	activePageSlice.actions;
+export const {
+	setActivePage,
+	setValModal,
+	setSpinModal,
+	setGift,
+	setMusicPlaying,
+} = activePageSlice.actions;
 
 export default activePageSlice.reducer;
