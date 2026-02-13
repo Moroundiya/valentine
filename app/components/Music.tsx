@@ -77,7 +77,7 @@ export default function Music() {
 			</div>
 			<div
 				onClick={handleToggle}
-				className="bg-white text-[#d23369] border-2 border-[#EA4986] p-1 shadow-md cursor-pointer w-10 h-10 rounded-full flex justify-center items-center">
+				className="bg-white text-[#d23369] border-2 overflow-hidden border-[#EA4986] p-1 shadow-md cursor-pointer w-10 h-10 rounded-full flex justify-center items-center">
 				{isPlaying ? (
 					<Icon
 						icon="basil:pause-solid"
