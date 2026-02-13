@@ -109,7 +109,7 @@ export default function Gift() {
 			opacity: 0,
 			duration: 1,
 			stagger: 0.18,
-			delay: 3.5,
+			delay: 3,
 			ease: "power3.out",
 		});
 
