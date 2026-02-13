@@ -111,7 +111,7 @@ export function Win({ modalOpen, gift }) {
 							<p
 								className="mb-3 text-[#c62354] text-center"
 								id="winWriteUp">
-								You won <span className="font-bold capitalize">{gift}</span>
+								You won <span className="font-bold capitalize">{gift}</span> as your valentine gift
 							</p>
 						</Modal.Body>
 						<button
