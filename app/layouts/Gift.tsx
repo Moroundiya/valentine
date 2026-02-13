@@ -1,10 +1,10 @@
-import Image from "next/image";
 import localFont from "next/font/local";
 import Confetti from "../components/Confetti";
 import openGift from "../assets/images/open-gift.webp";
 import CenterGradient from "../components/CenterGradient";
 import { Icon } from "@iconify/react";
 import { setActivePage } from "../redux/activePageSlice";
+import Image, { StaticImageData } from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useLayoutEffect, useRef, useState } from "react";
 
@@ -76,7 +76,7 @@ export default function Gift() {
 
 	const gift = useSelector((state: RootState) => state.activePage.gift);
 
-	const giftImages: Record<string, string> = {
+	const giftImages: Record<string, StaticImageData> = {
 		Chocolate: chocolate,
 		"Free Kiss": kiss,
 		"Ice Cream": icecream,
