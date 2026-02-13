@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./components/Provider";
+import { AudioProvider } from "./context/Audio";
 
 const poppins = Poppins({
 	subsets: ["latin"],
@@ -31,7 +32,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={`${poppins.className} antialiased`}>
-				<ReduxProvider>{children}</ReduxProvider>
+				<ReduxProvider>
+					<AudioProvider>{children}</AudioProvider>
+				</ReduxProvider>
 			</body>
 		</html>
 	);

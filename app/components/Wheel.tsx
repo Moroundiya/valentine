@@ -91,7 +91,7 @@ export default function WheelSpinner() {
 		<div
 			className="flex flex-col items-center gap-6 p-6 sm:p-10 overflow-hidden relative w-full px-5"
 			id="slideIn">
-			<div className="absolute z-20 top-2 lg:top-9 left-1/2 -translate-x-1/2">
+			<div className="absolute z-20 top-2 sm:top-7 md:top-7 left-1/2 -translate-x-1/2">
 				<Image
 					src={arrow}
 					alt="Image"

@@ -3,7 +3,7 @@ import Confetti from "../components/Confetti";
 import openGift from "../assets/images/open-gift.webp";
 import CenterGradient from "../components/CenterGradient";
 import { Icon } from "@iconify/react";
-import { setActivePage } from "../redux/activePageSlice";
+import { setActivePage, setMusicPlaying } from "../redux/activePageSlice";
 import Image, { StaticImageData } from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useLayoutEffect, useRef, useState } from "react";
@@ -22,6 +22,7 @@ import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { RootState } from "../redux/store";
+import { useAudio } from "../context/Audio";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const fredoka = localFont({
@@ -30,6 +31,7 @@ const fredoka = localFont({
 });
 
 export default function Gift() {
+	const { playAudio, pauseAudio, stopAudio, killAudio } = useAudio();
 	const boxRef = useRef<HTMLDivElement | null>(null);
 	const giftRef = useRef<HTMLDivElement | null>(null);
 	const dispatch = useDispatch();
@@ -59,6 +61,8 @@ export default function Gift() {
 				onComplete: () => {
 					setShowConfetti(true);
 					setShowMessage(true);
+					playAudio();
+					dispatch(setMusicPlaying(true));
 				},
 			},
 		);
@@ -91,7 +95,7 @@ export default function Gift() {
 		if (!showMessage) return;
 
 		const splitThanks = new SplitText("#thanks", { type: "words" });
-		const splitMessage = new SplitText("#message", { type: "words" });
+		const splitMessage = new SplitText("#message > *", { type: "words" });
 
 		gsap.from(splitThanks.words, {
 			opacity: 0,
@@ -142,7 +146,7 @@ export default function Gift() {
 						src={openGift}
 						alt="Image"
 						className="w-90 rotate-20"
-						priority
+						preload
 					/>
 				</div>
 				<div
@@ -152,7 +156,7 @@ export default function Gift() {
 						src={giftImg}
 						alt="Image"
 						className="w-50 rotate-20 transition-all ease-in-out duration-500"
-						priority
+						preload
 					/>
 				</div>
 			</div>
@@ -188,7 +192,10 @@ export default function Gift() {
 					</div>
 					<div className="w-full flex justify-end items-center px-5">
 						<button
-							onClick={() => dispatch(setActivePage("be-my-val"))}
+							onClick={() => {
+								dispatch(setActivePage("be-my-val"));
+								killAudio();
+							}}
 							className="w-fit mt-5 flex justify-center items-center space-x-1 bg-white rounded-full text-sm text-[#d23369] hd-button py-2 px-5 cursor-pointer"
 							id="replay">
 							<Icon

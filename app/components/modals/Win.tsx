@@ -97,6 +97,7 @@ export function Win({ modalOpen, gift }: { modalOpen: boolean; gift: string }) {
 									alt="Gift Box"
 									width={150}
 									id="winIcon"
+									preload
 								/>
 							</div>
 							<Modal.Heading

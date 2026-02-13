@@ -26,7 +26,7 @@ export default function Preloader() {
 					alt="Image"
 					className="relative z-20 w-full h-full object-contain"
 					id="logo"
-					priority
+					preload
 				/>
 			</div>
 			<Spinner />

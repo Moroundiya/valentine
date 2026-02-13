@@ -18,6 +18,7 @@ const fredoka = localFont({
 export default function BeMyVal() {
 	const dispatch = useDispatch();
 
+
 	useGSAP(() => {
 		gsap.from("#logo", {
 			y: -50,
@@ -61,6 +62,7 @@ export default function BeMyVal() {
 					alt="Image"
 					className="relative z-20 w-full h-full object-contain"
 					id="logo"
+					preload
 				/>
 			</div>
 			<div

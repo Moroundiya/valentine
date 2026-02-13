@@ -2,29 +2,36 @@
 
 import gsap from "gsap";
 import { Icon } from "@iconify/react";
-import { useRef, useEffect, useState } from "react";
+import { RootState } from "../redux/store";
+import { useAudio } from "../context/Audio";
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setMusicPlaying } from "../redux/activePageSlice";
 
 export default function Music() {
-	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const dispatch = useDispatch();
+	const { audioRef } = useAudio();
 	const barsRef = useRef<HTMLDivElement[]>([]);
 	const animationRef = useRef<gsap.core.Tween | null>(null);
-	const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-	const handleToggle = async () => {
-		if (!audioRef.current) return;
+	const isPlaying = useSelector(
+		(state: RootState) => state.activePage?.musicPlaying,
+	);
 
-		try {
-			if (isPlaying) {
-				audioRef.current.pause();
-				setIsPlaying(false);
-			} else {
-				await audioRef.current.play();
-				setIsPlaying(true);
-			}
-		} catch (err) {
-			console.log("Playback failed:", err);
-		}
+	const handleToggle = () => {
+		dispatch(setMusicPlaying(!isPlaying));
 	};
+
+	useEffect(() => {
+		const audio = audioRef.current;
+		if (!audio) return;
+
+		if (isPlaying) {
+			audio.play().catch((err) => console.error("Audio play failed:", err));
+		} else {
+			audio.pause();
+		}
+	}, [isPlaying, audioRef]);
 
 	useEffect(() => {
 		if (!barsRef.current.length) return;
@@ -38,6 +45,7 @@ export default function Music() {
 			});
 			return;
 		}
+
 		animationRef.current = gsap.to(barsRef.current, {
 			scaleY: () => gsap.utils.random(0.4, 1.6),
 			transformOrigin: "bottom",
@@ -55,11 +63,6 @@ export default function Music() {
 
 	return (
 		<div className="flex justify-between w-full px-4 lg:px-10 items-center fixed top-7 lg:top-10 left-0">
-			<audio
-				ref={audioRef}
-				src="/music/love.mp3"
-				loop
-			/>
 			<div className="flex items-end space-x-1 pointer-events-none w-10">
 				{Array.from({ length: 7 }).map((_, i) => (
 					<div

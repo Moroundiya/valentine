@@ -1,4 +1,4 @@
-import gsap from "gsap"; 
+import gsap from "gsap";
 import Image from "next/image";
 import angry from "../assets/images/heartbreak.webp";
 import localFont from "next/font/local";
@@ -62,16 +62,19 @@ export default function Rejected() {
 				alt="Image"
 				id="zoomOut"
 				className="w-90"
+				preload
 			/>
-			<div className="w-full flex flex-col justify-center items-center" id="slideUp">
-			<p className="text-sm text-white">or just say YES!</p>
-			<div className="w-9/12 mx-auto flex flex-col mt-8 space-y-5 justify-center items-center lg:w-8/12">
-				<button
-					onClick={() => dispatch(setValModal(true))}
-					className="text-[#d23369] hd-button font-semibold bg-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
-					Yes
-				</button>
-			</div>
+			<div
+				className="w-full flex flex-col justify-center items-center"
+				id="slideUp">
+				<p className="text-sm text-white">or just say YES!</p>
+				<div className="w-9/12 mx-auto flex flex-col mt-8 space-y-5 justify-center items-center lg:w-8/12">
+					<button
+						onClick={() => dispatch(setValModal(true))}
+						className="text-[#d23369] hd-button font-semibold bg-white w-full cursor-pointer rounded-xl shadow-md p-3.5 text-xl">
+						Yes
+					</button>
+				</div>
 			</div>
 		</div>
 	);
