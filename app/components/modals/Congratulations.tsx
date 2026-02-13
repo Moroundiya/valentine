@@ -1,14 +1,15 @@
 "use client";
 
-import localFont from "next/font/local";
 import gsap from "gsap";
+import localFont from "next/font/local";
 import SplitText from "gsap/SplitText";
+import { Icon } from "@iconify/react";
+import { Modal } from "@heroui/react";
+import { RootState } from "@/app/redux/store";
 import { useLayoutEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useDispatch, useSelector } from "react-redux";
 import { setActivePage, setValModal } from "@/app/redux/activePageSlice";
-import { Modal } from "@heroui/react";
-import { Icon } from "@iconify/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -17,9 +18,9 @@ const fredoka = localFont({
 	display: "swap",
 });
 
-export function Congratulations({ modalOpen }: { modalOpen : boolean}) {
+export function Congratulations({ modalOpen }: { modalOpen: boolean }) {
 	const dispatch = useDispatch();
-	const valModal = useSelector((state: boolean) => state.activePage.valModal);
+	const valModal = useSelector((state: RootState) => state.activePage.valModal);
 
 	useLayoutEffect(() => {
 		if (!valModal) return;

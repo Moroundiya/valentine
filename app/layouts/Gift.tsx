@@ -17,11 +17,11 @@ import cupcake from "../assets/images/Cupcake.webp";
 import flower from "../assets/images/flower.webp";
 import Music from "../components/Music";
 
-
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { RootState } from "../redux/store";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const fredoka = localFont({
@@ -74,7 +74,7 @@ export default function Gift() {
 		);
 	});
 
-	const gift = useSelector((state: string) => state.activePage.gift);
+	const gift = useSelector((state: RootState) => state.activePage.gift);
 
 	const giftImages: Record<string, string> = {
 		Chocolate: chocolate,

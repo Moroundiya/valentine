@@ -5,7 +5,7 @@ import SplitText from "gsap/SplitText";
 import localFont from "next/font/local";
 import CenterGradient from "../components/CenterGradient";
 import { useGSAP } from "@gsap/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setActivePage, setValModal } from "../redux/activePageSlice";
 
 gsap.registerPlugin(SplitText);

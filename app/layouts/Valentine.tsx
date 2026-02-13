@@ -11,15 +11,18 @@ import { useEffect } from "react";
 import { setActivePage } from "../redux/activePageSlice";
 import { Congratulations } from "../components/modals/Congratulations";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
 
 export default function Valentine() {
 	const dispatch = useDispatch();
 	const activePage = useSelector(
-		(state: string) => state.activePage.activePage,
+		(state: RootState) => state.activePage.activePage,
 	);
-	const valModal = useSelector((state: boolean) => state.activePage.valModal);
-	const spinModal = useSelector((state: boolean) => state.activePage.spinModal);
-	const gift = useSelector((state: string) => state.activePage.gift);
+	const valModal = useSelector((state: RootState) => state.activePage.valModal);
+	const spinModal = useSelector(
+		(state: RootState) => state.activePage.spinModal,
+	);
+	const gift = useSelector((state: RootState) => state.activePage.gift);
 
 	useEffect(() => {
 		setTimeout(() => {

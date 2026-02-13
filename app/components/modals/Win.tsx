@@ -5,9 +5,10 @@ import giftBox from "../../assets/images/gift-box.webp";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { Modal } from "@heroui/react";
+import { RootState } from "@/app/redux/store";
+import { useLayoutEffect } from "react";
 import { setActivePage, setSpinModal } from "@/app/redux/activePageSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useLayoutEffect } from "react";
 
 gsap.registerPlugin(SplitText);
 
@@ -18,7 +19,9 @@ const fredoka = localFont({
 
 export function Win({ modalOpen, gift }: { modalOpen: boolean; gift: string }) {
 	const dispatch = useDispatch();
-	const winModal = useSelector((state: boolean) => state.activePage.spinModal);
+	const winModal = useSelector(
+		(state: RootState) => state.activePage.spinModal,
+	);
 
 	useLayoutEffect(() => {
 		if (!winModal) return;
