@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { Icon } from "@iconify/react";
+import { useRef, useEffect, useState } from "react";
 
 export default function Music() {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -60,7 +60,6 @@ export default function Music() {
 				src="/music/love.mp3"
 				loop
 			/>
-
 			<div className="flex items-end space-x-1 pointer-events-none w-10">
 				{Array.from({ length: 7 }).map((_, i) => (
 					<div

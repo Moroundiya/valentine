@@ -1,23 +1,23 @@
 "use client";
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setActivePage } from "../redux/activePageSlice";
-import { Congratulations } from "../components/modals/Congratulations";
-import { Win } from "../components/modals/Win";
+import Gift from "./Gift";
 import Preloader from "./Preloader";
 import BeMyVal from "./BeMyVal";
 import Rejected from "./Rejected";
 import SpinWheel from "./SpinWheel";
-import Gift from "./Gift";
+
+import { Win } from "../components/modals/Win";
+import { useEffect } from "react";
+import { setActivePage } from "../redux/activePageSlice";
+import { Congratulations } from "../components/modals/Congratulations";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Valentine() {
+	const dispatch = useDispatch();
 	const activePage = useSelector((state: any) => state.activePage.activePage);
 	const valModal = useSelector((state: any) => state.activePage.valModal);
 	const spinModal = useSelector((state: any) => state.activePage.spinModal);
 	const gift = useSelector((state: any) => state.activePage.gift);
-
-	const dispatch = useDispatch();
 
 	useEffect(() => {
 		setTimeout(() => {

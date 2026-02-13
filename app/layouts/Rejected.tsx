@@ -1,13 +1,11 @@
+import gsap from "gsap"; 
 import Image from "next/image";
-import localFont from "next/font/local";
 import angry from "../assets/images/heartbreak.webp";
+import localFont from "next/font/local";
+import SplitText from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
 import { useDispatch } from "react-redux";
 import { setValModal } from "../redux/activePageSlice";
-
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import SplitText from "gsap/SplitText";
-import { useRef } from "react";
 
 gsap.registerPlugin(SplitText);
 
@@ -20,7 +18,6 @@ export default function Rejected() {
 	const dispatch = useDispatch();
 	useGSAP(() => {
 		const split = new SplitText("#text", { type: "words" });
-
 		gsap.from(split.words, {
 			opacity: 0,
 			duration: 1,
@@ -46,7 +43,6 @@ export default function Rejected() {
 			delay: 2.5,
 		});
 
-
 		return () => {
 			split.revert();
 		};
@@ -67,10 +63,8 @@ export default function Rejected() {
 				id="zoomOut"
 				className="w-90"
 			/>
-
 			<div className="w-full flex flex-col justify-center items-center" id="slideUp">
 			<p className="text-sm text-white">or just say YES!</p>
-
 			<div className="w-9/12 mx-auto flex flex-col mt-8 space-y-5 justify-center items-center lg:w-8/12">
 				<button
 					onClick={() => dispatch(setValModal(true))}

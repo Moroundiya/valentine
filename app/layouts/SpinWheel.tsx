@@ -1,9 +1,9 @@
-import localFont from "next/font/local";
-import WheelSpinner, { Wheel } from "../components/Wheel";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import localFont from "next/font/local";
 import SplitText from "gsap/SplitText";
+import WheelSpinner from "../components/Wheel";
 import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(SplitText);
 
@@ -16,7 +16,6 @@ export default function SpinWheel() {
 	const textRef = useRef(null);
 	useGSAP(() => {
 		const split = new SplitText(textRef.current, { type: "words" });
-
 		gsap.from(split.words, {
 			opacity: 0,
 			duration: 1,

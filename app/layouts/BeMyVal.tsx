@@ -1,12 +1,13 @@
-import CenterGradient from "../components/CenterGradient";
-import valDate from "../assets/images/val-date.webp";
+import gsap from "gsap";
 import Image from "next/image";
+import valDate from "../assets/images/val-date.webp";
+import SplitText from "gsap/SplitText";
 import localFont from "next/font/local";
+import CenterGradient from "../components/CenterGradient";
+import { useGSAP } from "@gsap/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setActivePage, setValModal } from "../redux/activePageSlice";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import SplitText from "gsap/SplitText";
+
 gsap.registerPlugin(SplitText);
 
 const fredoka = localFont({
@@ -15,6 +16,8 @@ const fredoka = localFont({
 });
 
 export default function BeMyVal() {
+	const dispatch = useDispatch();
+
 	useGSAP(() => {
 		gsap.from("#logo", {
 			y: -50,
@@ -46,11 +49,6 @@ export default function BeMyVal() {
 			splitQuestion.revert();
 		};
 	});
-
-	const dispatch = useDispatch();
-	const activePage = useSelector(
-		(state: string) => state.activePage.activePage,
-	);
 
 	return (
 		<div className="w-full lg:max-w-lg mx-auto min-h-dvh bg-[#d23369] text-black flex flex-col justify-center items-center overflow-hidden py-16">

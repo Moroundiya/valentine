@@ -1,14 +1,13 @@
 "use client";
-import { Button, Modal } from "@heroui/react";
 import localFont from "next/font/local";
-import { Icon } from "@iconify/react";
 import Image from "next/image";
 import giftBox from "../../assets/images/gift-box.webp";
+import gsap from "gsap";
+import SplitText from "gsap/SplitText";
+import { Modal } from "@heroui/react";
 import { setActivePage, setSpinModal } from "@/app/redux/activePageSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useLayoutEffect } from "react";
-import gsap from "gsap";
-import SplitText from "gsap/SplitText";
 
 gsap.registerPlugin(SplitText);
 
@@ -36,7 +35,7 @@ export function Win({ modalOpen, gift }) {
 			rotation: -8,
 			duration: 0.1,
 			yoyo: true,
-			repeat: 60, 
+			repeat: 60,
 			ease: "power1.inOut",
 		});
 
@@ -111,7 +110,8 @@ export function Win({ modalOpen, gift }) {
 							<p
 								className="mb-3 text-[#c62354] text-center"
 								id="winWriteUp">
-								You won <span className="font-bold capitalize">{gift}</span> as your valentine gift
+								You won <span className="font-bold capitalize">{gift}</span> as
+								your valentine gift
 							</p>
 						</Modal.Body>
 						<button

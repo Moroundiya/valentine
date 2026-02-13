@@ -16,10 +16,11 @@ const activePageSlice = createSlice({
 		setValModal: (state, action) => {
 			state.valModal = action.payload;
 		},
+
 		setSpinModal: (state, action) => {
 			state.spinModal = action.payload;
 		},
-
+		
 		setGift: (state, action) => {
 			state.gift = action.payload;
 		},

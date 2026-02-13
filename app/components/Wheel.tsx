@@ -1,13 +1,13 @@
 "use client";
-import { useState } from "react";
-import localFont from "next/font/local";
+import gsap from "gsap";
 import Image from "next/image";
 import arrow from "../assets/images/arrow.svg";
 import center from "../assets/images/center.svg";
+import localFont from "next/font/local";
+import { useState } from "react";
+import { useGSAP } from "@gsap/react";
 import { useDispatch } from "react-redux";
 import { setGift, setSpinModal } from "../redux/activePageSlice";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const fredoka = localFont({
 	src: "../assets/fonts/FredokaOne-Regular.ttf",
@@ -99,7 +99,7 @@ export default function WheelSpinner() {
 			</div>
 			<div
 				className="relative aspect-square w-80 shadow-md lg:w-96 rounded-full border-10 border-[#A02956] pointer-events-none
-        transition-transform duration-[4000ms] ease-[cubic-bezier(0.17,0.67,0.12,0.99)] before:content-[''] before:w-full before:h-full before:bg-transparent before:border-6 before:border-[#EA4986] before:absolute before:top-0 before:left-0 before:rounded-full"
+        transition-transform duration-4000 ease-[cubic-bezier(0.17,0.67,0.12,0.99)] before:content-[''] before:w-full before:h-full before:bg-transparent before:border-6 before:border-[#EA4986] before:absolute before:top-0 before:left-0 before:rounded-full"
 				style={{
 					transform: `rotate(${rotation}deg)`,
 					background: wheelBackground,

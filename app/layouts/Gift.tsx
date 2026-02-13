@@ -1,11 +1,12 @@
-import CenterGradient from "../components/CenterGradient";
 import Image from "next/image";
 import localFont from "next/font/local";
-import { Icon } from "@iconify/react";
 import Confetti from "../components/Confetti";
-import { setActivePage, setMusicPlaying } from "../redux/activePageSlice";
-import { useDispatch, useSelector } from "react-redux";
 import openGift from "../assets/images/open-gift.webp";
+import CenterGradient from "../components/CenterGradient";
+import { Icon } from "@iconify/react";
+import { setActivePage } from "../redux/activePageSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useLayoutEffect, useRef, useState } from "react";
 
 import chocolate from "../assets/images/chocolate.webp";
 import ringbox from "../assets/images/Ring-box.webp";
@@ -14,14 +15,13 @@ import icecream from "../assets/images/Ice-cream.webp";
 import hug from "../assets/images/Cat-Hugging.webp";
 import cupcake from "../assets/images/Cupcake.webp";
 import flower from "../assets/images/flower.webp";
+import Music from "../components/Music";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import Music from "../components/Music";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const fredoka = localFont({
@@ -30,11 +30,11 @@ const fredoka = localFont({
 });
 
 export default function Gift() {
-	const [showConfetti, setShowConfetti] = useState<boolean>(false);
-	const [showMessage, setShowMessage] = useState<boolean>(false);
 	const boxRef = useRef<HTMLDivElement | null>(null);
 	const giftRef = useRef<HTMLDivElement | null>(null);
 	const dispatch = useDispatch();
+	const [showConfetti, setShowConfetti] = useState<boolean>(false);
+	const [showMessage, setShowMessage] = useState<boolean>(false);
 
 	useGSAP(() => {
 		const tl = gsap.timeline();
@@ -149,15 +149,13 @@ export default function Gift() {
 					ref={giftRef}
 					className="absolute opacity-0">
 					<Image
-						// src={giftImg}
-						src={flower}
+						src={giftImg}
 						alt="Image"
 						className="w-50 rotate-20 transition-all ease-in-out duration-500"
 						priority
 					/>
 				</div>
 			</div>
-
 			{showMessage && (
 				<>
 					<div
@@ -202,7 +200,6 @@ export default function Gift() {
 					</div>
 				</>
 			)}
-
 			{showConfetti && <Confetti />}
 		</div>
 	);

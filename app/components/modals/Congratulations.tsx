@@ -1,14 +1,14 @@
 "use client";
-import { setActivePage, setValModal } from "@/app/redux/activePageSlice";
-import { Modal } from "@heroui/react";
-import { Icon } from "@iconify/react";
-import localFont from "next/font/local";
-import { useDispatch, useSelector } from "react-redux";
 
+import localFont from "next/font/local";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { useLayoutEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useDispatch, useSelector } from "react-redux";
+import { setActivePage, setValModal } from "@/app/redux/activePageSlice";
+import { Modal } from "@heroui/react";
+import { Icon } from "@iconify/react";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 

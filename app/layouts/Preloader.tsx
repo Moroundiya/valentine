@@ -1,9 +1,8 @@
+import gsap from "gsap";
 import Image from "next/image";
+import Spinner from "../components/Spinner";
 import loveLock from "@/app/assets/images/love-lock.webp";
 import CenterGradient from "../components/CenterGradient";
-import Spinner from "../components/Spinner";
-import { useEffect } from "react";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function Preloader() {
